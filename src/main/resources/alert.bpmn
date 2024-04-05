@@ -19,7 +19,7 @@
       <extensionElements>
         <zeebe:assignmentDefinition assignee="demo" />
       </extensionElements>
-      <incoming>Flow_0lv2dcz</incoming>
+      <incoming>Flow_12u433t</incoming>
       <outgoing>Flow_0bmeh6r</outgoing>
     </userTask>
     <userTask id="Task_LabAcknowledgeAlert" name="Lab Acknowledge Alert">
@@ -46,7 +46,7 @@
     </eventBasedGateway>
     <intermediateCatchEvent id="Event_CareTeamNotified" name="Care Team Notified">
       <incoming>Flow_1mje50s</incoming>
-      <outgoing>Flow_0lv2dcz</outgoing>
+      <outgoing>Flow_099wirn</outgoing>
       <messageEventDefinition id="MessageEventDefinition_0loc8wj" messageRef="Message_2ukfgv6" />
     </intermediateCatchEvent>
     <sequenceFlow id="Flow_1mje50s" sourceRef="Gateway_1rqu93b" targetRef="Event_CareTeamNotified" />
@@ -70,7 +70,6 @@
     <sequenceFlow id="Flow_0bmeh6r" sourceRef="Task_OperatorAcknowledgeAlert" targetRef="EndEvent_AlertAcknowledged" />
     <sequenceFlow id="Flow_1rgz3kh" sourceRef="Task_LabAcknowledgeAlert" targetRef="EndEvent_AlertAcknowledged" />
     <sequenceFlow id="Flow_0sshwuk" sourceRef="Activity_ProviderAcknowledgeAlert" targetRef="EndEvent_AlertAcknowledged" />
-    <sequenceFlow id="Flow_0lv2dcz" sourceRef="Event_CareTeamNotified" targetRef="Task_OperatorAcknowledgeAlert" />
     <receiveTask id="Activity_ProviderAcknowledgeAlert" name="Provider Acknowledges Alert" messageRef="Message_227vse6">
       <incoming>Flow_0qo9p2x</incoming>
       <outgoing>Flow_0sshwuk</outgoing>
@@ -81,6 +80,15 @@
       <incoming>Flow_0sshwuk</incoming>
       <terminateEventDefinition id="TerminateEventDefinition_04fshmb" />
     </endEvent>
+    <sequenceFlow id="Flow_099wirn" sourceRef="Event_CareTeamNotified" targetRef="Event_WaitForCareTeamAcknowledgement" />
+    <intermediateCatchEvent id="Event_WaitForCareTeamAcknowledgement" name="Wait for careteam acknowledgement">
+      <incoming>Flow_099wirn</incoming>
+      <outgoing>Flow_12u433t</outgoing>
+      <timerEventDefinition id="TimerEventDefinition_1cmvyor">
+        <timeDuration xsi:type="tFormalExpression">PT7M</timeDuration>
+      </timerEventDefinition>
+    </intermediateCatchEvent>
+    <sequenceFlow id="Flow_12u433t" sourceRef="Event_WaitForCareTeamAcknowledgement" targetRef="Task_OperatorAcknowledgeAlert" />
   </process>
   <error id="error_tweet_duplicated" name="Tweet duplicated" errorCode="duplicateMessage" />
   <message id="Message_2ukfgv6" name="Message_CareTeamNotified">
@@ -154,6 +162,12 @@
           <omgdc:Bounds x="1184" y="385" width="72" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1vl1lfc_di" bpmnElement="Event_WaitForCareTeamAcknowledgement">
+        <omgdc:Bounds x="732" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="707" y="145" width="89" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_10dfzhe_di" bpmnElement="Flow_10dfzhe">
         <omgdi:waypoint x="290" y="455" />
         <omgdi:waypoint x="290" y="310" />
@@ -176,12 +190,6 @@
         <omgdi:waypoint x="550" y="335" />
         <omgdi:waypoint x="550" y="420" />
         <omgdi:waypoint x="632" y="420" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0lv2dcz_di" bpmnElement="Flow_0lv2dcz">
-        <omgdi:waypoint x="668" y="200" />
-        <omgdi:waypoint x="750" y="200" />
-        <omgdi:waypoint x="750" y="120" />
-        <omgdi:waypoint x="830" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_09pdlcp_di" bpmnElement="Flow_09pdlcp">
         <omgdi:waypoint x="668" y="310" />
@@ -221,6 +229,16 @@
         <omgdi:waypoint x="1040" y="560" />
         <omgdi:waypoint x="1040" y="440" />
         <omgdi:waypoint x="1202" y="440" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_099wirn_di" bpmnElement="Flow_099wirn">
+        <omgdi:waypoint x="668" y="200" />
+        <omgdi:waypoint x="695" y="200" />
+        <omgdi:waypoint x="695" y="120" />
+        <omgdi:waypoint x="732" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12u433t_di" bpmnElement="Flow_12u433t">
+        <omgdi:waypoint x="768" y="120" />
+        <omgdi:waypoint x="830" y="120" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
