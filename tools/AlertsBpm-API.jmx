@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.0 r1840935">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="PagerLog-API" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Enable to use local artemis message broker" enabled="true"/>
+        <hashTree>
+          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="JmsInitialContextFactory" elementType="Argument">
+                <stringProp name="Argument.name">JmsInitialContextFactory</stringProp>
+                <stringProp name="Argument.value">org.apache.activemq.artemis.jndi.ActiveMQInitialContextFactory</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="JmsConnectionFactoryJndiName" elementType="Argument">
+                <stringProp name="Argument.name">JmsConnectionFactoryJndiName</stringProp>
+                <stringProp name="Argument.value">ConnectionFactory</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="JmsUrl" elementType="Argument">
+                <stringProp name="Argument.name">JmsUrl</stringProp>
+                <stringProp name="Argument.value">tcp://127.0.0.1:61616</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="JmsUsername" elementType="Argument">
+                <stringProp name="Argument.name">JmsUsername</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="JmsPassword" elementType="Argument">
+                <stringProp name="Argument.name">JmsPassword</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </Arguments>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Enable to use dev EMS message broker" enabled="false"/>
+        <hashTree>
+          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="JmsInitialContextFactory" elementType="Argument">
+                <stringProp name="Argument.name">JmsInitialContextFactory</stringProp>
+                <stringProp name="Argument.value">com.tibco.tibjms.naming.TibjmsInitialContextFactory</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="JmsConnectionFactoryJndiName" elementType="Argument">
+                <stringProp name="Argument.name">JmsConnectionFactoryJndiName</stringProp>
+                <stringProp name="Argument.value">FTQueueConnectionFactory</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="JmsUrl" elementType="Argument">
+                <stringProp name="Argument.name">JmsUrl</stringProp>
+                <stringProp name="Argument.value">tcp://tibemsdev.app.vumc.org:7555,tcp://tibemsdev.app.vumc.org:7556</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="JmsUsername" elementType="Argument">
+                <stringProp name="Argument.name">JmsUsername</stringProp>
+                <stringProp name="Argument.value">ocp_pagerlogapi_ams_sub_in</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="JmsPassword" elementType="Argument">
+                <stringProp name="Argument.name">JmsPassword</stringProp>
+                <stringProp name="Argument.value">tib0)O</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="JmsQueue" elementType="Argument">
+                <stringProp name="Argument.name">JmsQueue</stringProp>
+                <stringProp name="Argument.value">vumc.clinical.PagerLog.AmsMessage.xml.Q.request.P</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </Arguments>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Send Alert Message" enabled="false"/>
+        <hashTree>
+          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="JMSCorrelationID" elementType="Argument">
+                <stringProp name="Argument.name">JMSCorrelationID</stringProp>
+                <stringProp name="Argument.value">JMETER:${HOST_1}:${__Random(1000,999999)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </Arguments>
+          <hashTree/>
+          <PublisherSampler guiclass="JMSPublisherGui" testclass="PublisherSampler" testname="Send Alert Message" enabled="true">
+            <stringProp name="jms.jndi_properties">false</stringProp>
+            <stringProp name="jms.initial_context_factory">${JmsInitialContextFactory}</stringProp>
+            <stringProp name="jms.provider_url">${JmsUrl}</stringProp>
+            <stringProp name="jms.connection_factory">${JmsConnectionFactoryJndiName}</stringProp>
+            <stringProp name="jms.topic">dynamicQueues/vumc.clinical.AlertBpm.Alert.json.Q.request.P</stringProp>
+            <stringProp name="jms.security_principle">${JmsUsername}</stringProp>
+            <stringProp name="jms.security_credentials">${JmsPassword}</stringProp>
+            <stringProp name="jms.text_message">{
+  &quot;id&quot; : &quot;${__Random(1000,999999)}&quot;,
+  &quot;text&quot; : &quot;This is my new alert&quot;
+}</stringProp>
+            <stringProp name="jms.input_file">/home/developer/Documents/businessEventsProjects/BE_CriticalLab_Rules/TestData/AlertLabConclusion/alertableConclusion.xml</stringProp>
+            <stringProp name="jms.random_path"></stringProp>
+            <stringProp name="jms.config_choice">jms_use_text</stringProp>
+            <stringProp name="jms.config_msg_type">jms_text_message</stringProp>
+            <stringProp name="jms.iterations">1</stringProp>
+            <boolProp name="jms.authenticate">true</boolProp>
+            <elementProp name="jms.jmsProperties" elementType="JMSProperties">
+              <collectionProp name="JMSProperties.properties">
+                <elementProp name="" elementType="JMSProperty">
+                  <stringProp name="JMSProperty.name">JMSCorrelationID</stringProp>
+                  <stringProp name="JMSProperty.value">${CorrelationId}</stringProp>
+                  <stringProp name="JMSProperty.type">java.lang.String</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="jms.expiration"></stringProp>
+            <stringProp name="jms.priority"></stringProp>
+            <stringProp name="TestPlan.comments">tib0)O</stringProp>
+            <stringProp name="jms_error_reconnect_on_codes"></stringProp>
+          </PublisherSampler>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Send Alert Ack Message" enabled="true"/>
+        <hashTree>
+          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="JMSCorrelationID" elementType="Argument">
+                <stringProp name="Argument.name">JMSCorrelationID</stringProp>
+                <stringProp name="Argument.value">JMETER:${HOST_1}:${__Random(1000,999999)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </Arguments>
+          <hashTree/>
+          <PublisherSampler guiclass="JMSPublisherGui" testclass="PublisherSampler" testname="Send Alert Message" enabled="true">
+            <stringProp name="jms.jndi_properties">false</stringProp>
+            <stringProp name="jms.initial_context_factory">${JmsInitialContextFactory}</stringProp>
+            <stringProp name="jms.provider_url">${JmsUrl}</stringProp>
+            <stringProp name="jms.connection_factory">${JmsConnectionFactoryJndiName}</stringProp>
+            <stringProp name="jms.topic">dynamicQueues/vumc.clinical.AlertBpm.AlertEvent.json.Q.request.P</stringProp>
+            <stringProp name="jms.security_principle">${JmsUsername}</stringProp>
+            <stringProp name="jms.security_credentials">${JmsPassword}</stringProp>
+            <stringProp name="jms.text_message">{
+  &quot;id&quot; : &quot;257178&quot;,
+  &quot;type&quot;: &quot;ACK&quot;,
+  &quot;user&quot; : &quot;norm&quot;
+}</stringProp>
+            <stringProp name="jms.input_file">/home/developer/Documents/businessEventsProjects/BE_CriticalLab_Rules/TestData/AlertLabConclusion/alertableConclusion.xml</stringProp>
+            <stringProp name="jms.random_path"></stringProp>
+            <stringProp name="jms.config_choice">jms_use_text</stringProp>
+            <stringProp name="jms.config_msg_type">jms_text_message</stringProp>
+            <stringProp name="jms.iterations">1</stringProp>
+            <boolProp name="jms.authenticate">true</boolProp>
+            <elementProp name="jms.jmsProperties" elementType="JMSProperties">
+              <collectionProp name="JMSProperties.properties">
+                <elementProp name="" elementType="JMSProperty">
+                  <stringProp name="JMSProperty.name">JMSCorrelationID</stringProp>
+                  <stringProp name="JMSProperty.value">${CorrelationId}</stringProp>
+                  <stringProp name="JMSProperty.type">java.lang.String</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="JMSProperty">
+                  <stringProp name="JMSProperty.name">alertId</stringProp>
+                  <stringProp name="JMSProperty.value">990769</stringProp>
+                  <stringProp name="JMSProperty.type">java.lang.String</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="jms.expiration"></stringProp>
+            <stringProp name="jms.priority"></stringProp>
+            <stringProp name="TestPlan.comments">tib0)O</stringProp>
+            <stringProp name="jms_error_reconnect_on_codes"></stringProp>
+          </PublisherSampler>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Send ClinicalMessageCallback" enabled="false"/>
+        <hashTree>
+          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="JMSCorrelationID" elementType="Argument">
+                <stringProp name="Argument.name">JMSCorrelationID</stringProp>
+                <stringProp name="Argument.value">JMETER:${HOST_1}:${__Random(1000,999999)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </Arguments>
+          <hashTree/>
+          <PublisherSampler guiclass="JMSPublisherGui" testclass="PublisherSampler" testname="Send Callback Message" enabled="true">
+            <stringProp name="jms.jndi_properties">false</stringProp>
+            <stringProp name="jms.initial_context_factory">${JmsInitialContextFactory}</stringProp>
+            <stringProp name="jms.provider_url">${JmsUrl}</stringProp>
+            <stringProp name="jms.connection_factory">${JmsConnectionFactoryJndiName}</stringProp>
+            <stringProp name="jms.topic">dynamicQueues/vumc.clinical.AlertBpm.ClinicalMessageCallback.json.Q.request.P</stringProp>
+            <stringProp name="jms.security_principle">${JmsUsername}</stringProp>
+            <stringProp name="jms.security_credentials">${JmsPassword}</stringProp>
+            <stringProp name="jms.text_message">{
+  &quot;clientMessageId&quot; : &quot;990769&quot;,
+  &quot;statusCode&quot; : 10,
+  &quot;statusDescription&quot; : &quot;Success&quot;
+}</stringProp>
+            <stringProp name="jms.input_file">/home/developer/Documents/businessEventsProjects/BE_CriticalLab_Rules/TestData/AlertLabConclusion/alertableConclusion.xml</stringProp>
+            <stringProp name="jms.random_path"></stringProp>
+            <stringProp name="jms.config_choice">jms_use_text</stringProp>
+            <stringProp name="jms.config_msg_type">jms_text_message</stringProp>
+            <stringProp name="jms.iterations">1</stringProp>
+            <boolProp name="jms.authenticate">true</boolProp>
+            <elementProp name="jms.jmsProperties" elementType="JMSProperties">
+              <collectionProp name="JMSProperties.properties">
+                <elementProp name="" elementType="JMSProperty">
+                  <stringProp name="JMSProperty.name">JMSCorrelationID</stringProp>
+                  <stringProp name="JMSProperty.value">${CorrelationId}</stringProp>
+                  <stringProp name="JMSProperty.type">java.lang.String</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="JMSProperty">
+                  <stringProp name="JMSProperty.name">alertId</stringProp>
+                  <stringProp name="JMSProperty.value">990769</stringProp>
+                  <stringProp name="JMSProperty.type">java.lang.String</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="jms.expiration"></stringProp>
+            <stringProp name="jms.priority"></stringProp>
+            <stringProp name="TestPlan.comments">tib0)O</stringProp>
+            <stringProp name="jms_error_reconnect_on_codes"></stringProp>
+          </PublisherSampler>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
