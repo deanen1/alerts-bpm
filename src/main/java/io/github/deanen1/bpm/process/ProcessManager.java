@@ -49,7 +49,7 @@ public class ProcessManager {
     }
   }
 
-  public void publishMessageForClinicalMessageCallback(
+  public void processClinicalMessageCallback(
       String alertId, ClinicalMessageCallback callback) {
     Optional<Alert> alert = alertsService.get(alertId);
 

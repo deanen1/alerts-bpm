@@ -18,6 +18,6 @@ public class ClinicalMessageCallbackListener {
       @Header("alertId") String alertId,
       @Payload ClinicalMessageCallback callback) {
 
-    processManager.publishMessageForClinicalMessageCallback(alertId, callback);
+    processManager.processClinicalMessageCallback(alertId, callback);
   }
 }

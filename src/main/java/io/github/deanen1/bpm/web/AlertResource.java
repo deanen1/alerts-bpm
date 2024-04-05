@@ -3,7 +3,6 @@ package io.github.deanen1.bpm.web;
 import io.github.deanen1.bpm.business.domain.Alert;
 import io.github.deanen1.bpm.business.domain.AlertEvent;
 import io.github.deanen1.bpm.business.domain.ClinicalMessageCallback;
-import io.github.deanen1.bpm.business.service.AlertsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +36,7 @@ public class AlertResource {
   public ResponseEntity<String> postClinicalMessageCallbacl(
       @PathVariable("id") String alertId, @RequestBody ClinicalMessageCallback callback) {
 
-    processManager.publishMessageForClinicalMessageCallback(alertId, callback);
+    processManager.processClinicalMessageCallback(alertId, callback);
 
     return ResponseEntity.ok().build();
   }
