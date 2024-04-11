@@ -37,8 +37,8 @@
     </parallelGateway>
     <sequenceFlow id="Flow_10dfzhe" sourceRef="Gateway_1x89yzb" targetRef="Task_SendClinicalMessage" />
     <sequenceFlow id="Flow_0qo9p2x" sourceRef="Gateway_1x89yzb" targetRef="Activity_ProviderAcknowledgeAlert" />
-    <sequenceFlow id="Flow_15ywv5s" sourceRef="Task_SendClinicalMessage" targetRef="Gateway_1rqu93b" />
-    <eventBasedGateway id="Gateway_1rqu93b">
+    <sequenceFlow id="Flow_15ywv5s" sourceRef="Task_SendClinicalMessage" targetRef="Gateway_WaitForCareTeamCallback" />
+    <eventBasedGateway id="Gateway_WaitForCareTeamCallback">
       <incoming>Flow_15ywv5s</incoming>
       <outgoing>Flow_1mje50s</outgoing>
       <outgoing>Flow_0nuhlwu</outgoing>
@@ -49,13 +49,13 @@
       <outgoing>Flow_099wirn</outgoing>
       <messageEventDefinition id="MessageEventDefinition_0loc8wj" messageRef="Message_2ukfgv6" />
     </intermediateCatchEvent>
-    <sequenceFlow id="Flow_1mje50s" sourceRef="Gateway_1rqu93b" targetRef="Event_CareTeamNotified" />
+    <sequenceFlow id="Flow_1mje50s" sourceRef="Gateway_WaitForCareTeamCallback" targetRef="Event_CareTeamNotified" />
     <intermediateCatchEvent id="Event_CareTeamNotficationFailed" name="Care Team Notfication Failed">
       <incoming>Flow_0nuhlwu</incoming>
       <outgoing>Flow_09pdlcp</outgoing>
       <messageEventDefinition id="MessageEventDefinition_1e4sxg7" messageRef="Message_2063rc3" />
     </intermediateCatchEvent>
-    <sequenceFlow id="Flow_0nuhlwu" sourceRef="Gateway_1rqu93b" targetRef="Event_CareTeamNotficationFailed" />
+    <sequenceFlow id="Flow_0nuhlwu" sourceRef="Gateway_WaitForCareTeamCallback" targetRef="Event_CareTeamNotficationFailed" />
     <intermediateCatchEvent id="Event_CareTeamNotficationTimedOut" name="Care Team Notfication Timed Out">
       <incoming>Flow_0h8ut1l</incoming>
       <outgoing>Flow_0sv14s5</outgoing>
@@ -63,7 +63,7 @@
         <timeDuration xsi:type="tFormalExpression">PT5M</timeDuration>
       </timerEventDefinition>
     </intermediateCatchEvent>
-    <sequenceFlow id="Flow_0h8ut1l" sourceRef="Gateway_1rqu93b" targetRef="Event_CareTeamNotficationTimedOut" />
+    <sequenceFlow id="Flow_0h8ut1l" sourceRef="Gateway_WaitForCareTeamCallback" targetRef="Event_CareTeamNotficationTimedOut" />
     <sequenceFlow id="Flow_09pdlcp" sourceRef="Event_CareTeamNotficationFailed" targetRef="Task_LabAcknowledgeAlert" />
     <sequenceFlow id="Flow_0sv14s5" sourceRef="Event_CareTeamNotficationTimedOut" targetRef="Task_LabAcknowledgeAlert" />
     <sequenceFlow id="Flow_034e821" sourceRef="StartEvent_NewAlert" targetRef="Gateway_1x89yzb" />
@@ -115,7 +115,7 @@
       <bpmndi:BPMNShape id="Event_1xms5nd_di" bpmnElement="Event_1xms5nd">
         <omgdc:Bounds x="1602" y="362" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0ojjqc1_di" bpmnElement="Gateway_1rqu93b">
+      <bpmndi:BPMNShape id="Gateway_0ojjqc1_di" bpmnElement="Gateway_WaitForCareTeamCallback">
         <omgdc:Bounds x="525" y="285" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0c4s21w_di" bpmnElement="Event_CareTeamNotficationFailed">

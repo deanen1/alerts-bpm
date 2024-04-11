@@ -1,4 +1,4 @@
-package io.github.deanen1.bpm.jms;
+package io.github.deanen1.bpm.integration.jms;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.type.TypeFactory;
